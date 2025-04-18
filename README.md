@@ -29,42 +29,54 @@ It supports:
 
 ---
 
-## 🔐 Step 1: Create App Registration
+## 🔐 Step 1: Create App Registration (Azure AD)
 
 1. Go to [Azure Portal → App registrations](https://portal.azure.com/#view/Microsoft_AAD_RegisteredApps)
 2. Click **New registration**
 3. Name: `fastapi-teams-bot`
-4. Supported account types: choose **Accounts in any org and personal accounts**
-5. Register → Copy the:
-   - **Application (client) ID** → `MICROSOFT_APP_ID`
-   - **Directory (tenant) ID** (optional)
+4. Supported account types: **Accounts in any org and personal accounts**
+5. Click **Register**
+6. Copy the following:
+   - `Application (client) ID` → **`MICROSOFT_APP_ID`**
+   - `Directory (tenant) ID` (optional)
 
-### 🔑 Create Client Secret
-1. Go to your App → **Certificates & secrets**
+### 🔑 Generate a Client Secret
+
+1. Go to **Certificates & secrets** in the App Registration
 2. Click **+ New client secret**
-3. Copy the generated **Value** → `MICROSOFT_APP_PASSWORD`
+3. Name it (e.g. `bot-secret`) and set an expiry
+4. Click **Add** and copy the **Value** → **`MICROSOFT_APP_PASSWORD`**
 
 ---
 
-## 🤖 Step 2: Create Azure Bot (Channels Registration)
+## 🤖 Step 2: Create Azure Bot (Bot Channels Registration)
 
-1. Go to **Azure Portal → Create Resource → Azure Bot**
-2. Click on create ![image](https://github.com/user-attachments/assets/df6b74b8-4a5f-4525-94cd-722310704a02)
-3. Fill details and choose 	"Use existing app registration" and pass the app id we had in app registration. ![image](https://github.com/user-attachments/assets/0371c539-8f39-4813-baac-9046673c307a)
+1. Go to **Azure Portal → Create a resource → Azure Bot**
+2. Select **Bot Channels Registration**
+3. In the form:
+   - **Bot handle**: `fastapi-teams-bot`
+   - **Microsoft App ID**: Paste the App ID from Step 1
+   - **Microsoft App password**: Paste the secret
+   - **Messaging endpoint**: Use placeholder (e.g. `https://dummy/api/messages`)
+   - Choose **"Use existing app registration"**
+4. Click **Create**
 
-4. Choose: **Our newly created bot**
-5. Fill:
-   - **Microsoft App Password**: Paste the secret from step 1
-   - **Messaging endpoint**: Which you got by running ngrok
-6. Once deployed:
-   - Go to **Channels** → Add **Microsoft Teams** and **Web Chat**
+### ➕ Enable Channels
+
+After deployment:
+- Go to the bot resource → **Channels**
+- Add:
+  - ✅ Microsoft Teams
+  - ✅ Web Chat
 
 ---
 
-## ⚙️ Step 3: Local Setup
+## ⚙️ Step 3: Local Development Setup
 
-### 📥 Clone this repository
+### 🧭 Clone the Repository
 
 ```bash
 git clone https://github.com/your-username/fastapi-teams-bot.git
 cd fastapi-teams-bot
+
+
