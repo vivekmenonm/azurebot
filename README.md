@@ -49,11 +49,10 @@ It supports:
 
 ---
 
-## 🤖 Step 2: Create Azure Bot (Bot Channels Registration)
+## 🤖 Step 2: Create Azure Bot
 
 1. Go to **Azure Portal → Create a resource → Azure Bot**
-2. Select **Bot Channels Registration**
-3. In the form:
+2. In the form:
    - **Bot handle**: `fastapi-teams-bot`
    - **Microsoft App ID**: Paste the App ID from Step 1
    - **Microsoft App password**: Paste the secret
